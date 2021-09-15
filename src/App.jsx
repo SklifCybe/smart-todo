@@ -21,12 +21,12 @@ function App() {
       dispatch(setLists(lists));
       dispatch(setTodos(todos));
     })();
-  }, []);
+  }, [getCollection, dispatch]);
 
   return (
     <div className="wrapper">
       <Drawer />
-      <Route path="/:listId" component={TodoList} />
+      <Route path="/:list" component={TodoList} />
     </div>
   );
 }

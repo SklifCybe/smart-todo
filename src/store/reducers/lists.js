@@ -1,5 +1,6 @@
 const initialState = {
-  lists: []
+  lists: [],
+  activeList: ''
 };
 
 export const listsReducer = (state = initialState, action) => {
@@ -8,7 +9,12 @@ export const listsReducer = (state = initialState, action) => {
       return {
         ...state,
         lists: action.payload
-      }
+      };
+    case 'SET-ACTIVE-LIST':
+      return {
+        ...state,
+        activeList: action.payload
+      };
     default: return state;
   }
 };

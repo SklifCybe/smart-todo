@@ -13,8 +13,7 @@
 }
 
 #root {
-  //wtf is this? i don't know
-  height: calc(100vh - 2.2rem);
+  height: 100vh;
 }
 
 .wrapper {
@@ -23,8 +22,8 @@
 }
 
 .side-bar {
-  width: 15rem;
-  border: 1px solid black;
+  width: 20rem;
+  border-right: 1px solid rgb(209, 209, 209);
   height: 100%;
   padding: 1rem;
 
@@ -46,29 +45,47 @@
       border-radius: 10px;
 
       &:hover {
-        background: rgb(224, 224, 224);
+        background: darken(#fff, 10);
       }
 
       &:active {
-        background: rgb(207, 207, 207);
+        background: darken(#fff, 15);
       }
 
       &-icon {
         margin-right: 1rem;
       }
 
-      &-link {
-        &:visited {
-          color: #000;
+      &-active {
+        li {
+          background-color: rgb(238, 228, 254);
+          color: #6115f9;
         }
-        &:link {
-          color: #000;
-        }
+      }
+    }
+
+    &-link {
+      &:visited {
+        color: #000;
+      }
+      &:link {
+        color: #000;
       }
     }
   }
 }
 
-.todos {
-  padding: 0.5rem;
+.todo {
+  padding: 1rem;
+  background-color: rgb(243, 242, 243);
+  width: 100%;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: #000;
+  }
 }
