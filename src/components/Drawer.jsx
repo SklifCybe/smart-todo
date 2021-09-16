@@ -14,7 +14,7 @@ export const Drawer = () => {
       <h4 className="side-bar__title">React Todo</h4>
       <ul className="side-bar__list">
         {[
-          { title: 'Задачи', icon: 'home', to: '/tasks' },
+          { title: 'Задачи', icon: 'home', to: '/' },
           { title: 'Важно', icon: 'star', to: '/important' },
           { title: 'Заплонировано', icon: 'event', to: '/planed' },
         ].map((item) => (
@@ -23,6 +23,7 @@ export const Drawer = () => {
             to={item.to}
             className="side-bar__list-link"
             activeClassName="side-bar__list-item-active"
+            exact
             onClick={() => dispatch(setActiveLists(item.title))}>
             <li className="side-bar__list-item">
               <i className="material-icons side-bar__list-item-icon">{item.icon}</i>

@@ -17,8 +17,38 @@ export const useApiDb = () => {
       .catch((err) => {
         console.error(err);
       })
-  }, []);
+  }, [db]);
+
+  const addTodo = useCallback((data) => {
+    return db.collection('todos')
+      .add({
+        completed: false,
+        ...data
+      })
+      .then((docRef) => docRef.get())
+      .then((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+  }, [db]);
+
+  const toggleCompletedTodo = useCallback((todo) => {
+    db.collection('todos').doc(todo.id).update({
+      completed: !todo.completed
+    }).catch((err) => {
+      console.error(err);
+    })
+  }, [db]);
+
+  const deleteTodo = useCallback((id) => {
+    db.collection('todos')
+      .doc(id)
+      .delete()
+      .catch((err) => {
+        console.error(err);
+      })
+  }, [db])
 
 
-  return { getCollection };
+  return { getCollection, addTodo, toggleCompletedTodo, deleteTodo };
 };

@@ -1,6 +1,6 @@
 const initialState = {
   lists: [],
-  activeList: ''
+  activeList: 'Задачи'
 };
 
 export const listsReducer = (state = initialState, action) => {

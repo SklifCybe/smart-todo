@@ -85,7 +85,25 @@
     margin-bottom: 1rem;
   }
 
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &-delete {
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(129, 129, 129);
+      }
+
+      &:active {
+        color: rgb(83, 83, 83);
+      }
+    }
+  }
+
   &__text {
     color: #000;
+    flex: 1;
   }
 }

@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="wrapper">
       <Drawer />
-      <Route path="/:list" component={TodoList} />
+      <Route exact path={['/', '/:list']} component={TodoList} />
     </div>
   );
 }
