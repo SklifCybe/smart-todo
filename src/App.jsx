@@ -1,16 +1,18 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { Drawer } from './components/Drawer';
 import { TodoList } from './components/TodoList';
+import { getLists } from './store/actions/lists';
+import { getTodos } from './store/actions/todos';
 
-import { useApiDb } from './hooks/api';
 
 function App() {
-  const { getLists, getTodos } = useApiDb();
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    Promise.all([getTodos(), getLists()]);
+    Promise.all([dispatch(getTodos()), dispatch(getLists())]);
   }, [getTodos, getLists]);
 
   return (

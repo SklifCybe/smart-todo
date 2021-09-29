@@ -1,18 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeTodo, toggleTodoThunk } from '../store/actions/todos';
 
-import { useApiDb } from '../hooks/api';
 
 export const TodoItem = ({ todo, selectHandler }) => {
-  const apiDb = useApiDb();
+  const dispatch = useDispatch();
 
   const todoCheckHandler = async () => {
-    await apiDb.toggleCompletedTodo(todo);
+    dispatch(toggleTodoThunk(todo));
   };
 
   const deleteHandler = async (event) => {
     event.preventDefault();
     if (window.confirm('Вы действительно хотите удалить задачу?')) {
-      await apiDb.removeTodo(todo.id);
+      dispatch(removeTodo(todo.id));
     }
   };
 

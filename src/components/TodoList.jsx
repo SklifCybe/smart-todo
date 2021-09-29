@@ -1,19 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TodoForm } from './TodoForm';
 import { TodoItem } from './TodoItem';
-import { useApiDb } from '../hooks/api';
 import { TodoDetails } from './TodoDetails';
+import { appendTodo } from '../store/actions/todos';
 
 export const TodoList = ({ match }) => {
   const [selectedTodo, setSelectedTodo] = React.useState(null);
+  const dispatch = useDispatch();
   const todos = useSelector(({ todo }) => todo.todos);
   const lists = useSelector(({ list }) => list);
-  const apiDb = useApiDb();
 
   const onSumbit = async (title) => {
-    await apiDb.appendTodo({ listId: match.params.list, title });
+    dispatch(appendTodo({ listId: match.params.list, title }));
   };
 
   const selectHandler = (todo) => {
